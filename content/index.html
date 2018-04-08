@@ -57,7 +57,7 @@ input[type=submit][disabled] {
                 {% for network in networks %}
                 <li class="{{ network.secure | ternary('secure', 'unsecure') }}">{{ network.ssid }}</li>
                 {% endfor %}
-                <!-- part HTML_SETTINGS_FOOTER -->
+                <!-- part HTML_SETTINGS_MIDDLE -->
             </ul>
 
             <div class="nonetworks" style="display: none;">
@@ -76,6 +76,7 @@ input[type=submit][disabled] {
 
             <input type="submit" id="join" value="Join" disabled />
 
+                <!-- part HTML_SETTINGS_OTAPARAMETERS -->
             <div class="field otarepo" style="display: block;">
                 <label for="otarepo">OTA repository:</label>
                 <input type="text" id="otarepo" name="otarepo" value="HomeACcessoryKid/ota-demo" />
@@ -88,6 +89,7 @@ input[type=submit][disabled] {
                 <label for="otafile">OTA binary file:</label>
                 <input type="text" id="otafile" name="otafile" value="main.bin" />
             </div>
+                <!-- part HTML_SETTINGS_FOOTER -->
         </form>
     </div>
     <script>

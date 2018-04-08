@@ -191,6 +191,7 @@ static void wifi_scan_task(void *arg)
 #include "index.html.h"
 
 static void wifi_config_server_on_settings(client_t *client) {
+    char *ota_repo=NULL;
     static const char http_prologue[] =
         "HTTP/1.1 200 \r\n"
         "Content-Type: text/html; charset=utf-8\r\n"
@@ -218,6 +219,11 @@ static void wifi_config_server_on_settings(client_t *client) {
 
         xSemaphoreGive(wifi_networks_mutex);
     }
+
+    client_send_chunk(client, html_settings_middle);
+    
+    if (sysparam_get_string("ota_repo", &ota_repo)!=SYSPARAM_OK) client_send_chunk(client, html_settings_otaparameters);
+    else free ota_repo;
 
     client_send_chunk(client, html_settings_footer);
     client_send_chunk(client, "");
