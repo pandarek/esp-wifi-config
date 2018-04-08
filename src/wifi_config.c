@@ -223,7 +223,7 @@ static void wifi_config_server_on_settings(client_t *client) {
     client_send_chunk(client, html_settings_middle);
     
     if (sysparam_get_string("ota_repo", &ota_repo)!=SYSPARAM_OK) client_send_chunk(client, html_settings_otaparameters);
-    else free ota_repo;
+    else free(ota_repo);
 
     client_send_chunk(client, html_settings_footer);
     client_send_chunk(client, "");
