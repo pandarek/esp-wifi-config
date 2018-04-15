@@ -242,7 +242,6 @@ static void wifi_config_server_on_settings_update(client_t *client) {
     form_param_t *ssid_param = form_params_find(form, "ssid");
     form_param_t *password_param = form_params_find(form, "password");
     form_param_t *otarepo_param = form_params_find(form, "otarepo");
-    form_param_t *otavrsn_param = form_params_find(form, "otavrsn");
     form_param_t *otafile_param = form_params_find(form, "otafile");
     if (!ssid_param || !password_param) {
         form_params_free(form);
@@ -256,7 +255,6 @@ static void wifi_config_server_on_settings_update(client_t *client) {
     sysparam_set_string("wifi_ssid", ssid_param->value);
     sysparam_set_string("wifi_password", password_param->value);
     if (otarepo_param && otarepo_param->value) sysparam_set_string("ota_repo", otarepo_param->value);
-    if (otavrsn_param && otavrsn_param->value) sysparam_set_string("ota_version", otavrsn_param->value);
     if (otafile_param && otafile_param->value) sysparam_set_string("ota_file", otafile_param->value);
     form_params_free(form);
 
